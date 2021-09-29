@@ -136,7 +136,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 38.5rem) {
+@media screen and (max-width: 37.5rem) {
     * {
         font-size: 1.25rem;
     }
