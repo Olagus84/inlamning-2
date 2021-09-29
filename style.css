@@ -100,9 +100,11 @@ main {
 @media screen and (max-width: 77rem) {
     .image-finder {
         display: block grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         grid-template:
-            "a a" 50px
-            "b c" auto / auto auto;
+            "a a"
+            "b c";
             text-align: center;
             align-content: center;
     }
