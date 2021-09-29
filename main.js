@@ -12,7 +12,7 @@ form.onsubmit = e => {
     let colorInput = form.elements.color.value;
     page = 1;
     imageDiv.innerHTML = '';
-    
+
     searchParam = imageInput + '+' + colorInput;
     previousBtn.style.display = 'inline-block';
     nextBtn.style.display = 'inline-block';
@@ -48,7 +48,7 @@ async function getImages(q, page) {
     const data = await response.json();
 
     console.log(data);
-    pageCount = Math.ceil(data.totalHits / 10); 
+    pageCount = Math.ceil(data.totalHits / 10);
     let hits = data.hits;
     hits.forEach(i => {
         let parent = document.createElement('div');
@@ -60,12 +60,12 @@ async function getImages(q, page) {
         image.setAttribute('class', 'image-result');
         link.appendChild(image);
         parent.appendChild(link);
-        let caption =document.createElement('figcaption');
+        let caption = document.createElement('figcaption');
         let tags = document.createElement('h2');
-        tags.innerText =i.tags;
+        tags.innerText = i.tags;
         caption.appendChild(tags);
         let author = document.createElement('p');
-        author.innerText ='Creator: ' +   i.user;
+        author.innerText = 'Creator: ' + i.user;
         caption.appendChild(author);
         parent.appendChild(caption);
         imageDiv.appendChild(parent);
