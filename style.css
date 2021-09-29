@@ -16,7 +16,6 @@ body {
 }
 
 footer {
-    
     margin-top: 0.5rem;
 }
 h1 {
@@ -98,8 +97,7 @@ main {
     display: none;
 }
 
-/* FUNKAR INTE SOM DET SKA!!!!!! */
-@media screen and (max-width: 90rem) {
+@media screen and (max-width: 77rem) {
     .image-finder {
         display: block grid;
         grid-template:
@@ -151,3 +149,4 @@ main {
         padding: 0.2rem;
     }
 }
+/* Hej hej Jakob! */
