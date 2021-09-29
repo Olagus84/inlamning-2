@@ -12,14 +12,12 @@ form.onsubmit = e => {
     let colorInput = form.elements.color.value;
     page = 1;
     imageDiv.innerHTML = '';
-
+    
     searchParam = imageInput + '+' + colorInput;
-
     previousBtn.style.display = 'inline-block';
     nextBtn.style.display = 'inline-block';
     previousBtn.disabled = true;
     nextBtn.disabled = false;
-
     getImages(searchParam, page);
 };
 
@@ -33,7 +31,6 @@ previousBtn.addEventListener('click', e => {
     nextBtn.disabled = false;
     getImages(searchParam, page);
 });
-
 
 nextBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -51,8 +48,6 @@ async function getImages(q, page) {
     const data = await response.json();
 
     console.log(data);
-
-    // Btn.disabled = true;
     pageCount = Math.ceil(data.totalHits / 10); 
     let hits = data.hits;
     hits.forEach(i => {
@@ -73,8 +68,6 @@ async function getImages(q, page) {
         author.innerText ='Creator: ' +   i.user;
         caption.appendChild(author);
         parent.appendChild(caption);
-        
-
         imageDiv.appendChild(parent);
     });
 
