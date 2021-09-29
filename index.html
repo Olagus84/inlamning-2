@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Images search from PixaBay">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1>PixaBay Image Search</h1>
+        <section class="image-finder">
+            <form>
+                <input id="text" name="image" class="color" type="text" placeholder="Search image..">
+                <select id="color" class="color" name="color">
+                    <option class="color" value="">Any Color</option>
+                    <option class="color" value="Grayscale">Grayscale</option>
+                    <option class="color" value="Transparent">Transparent</option>
+                    <option class="color" value="Red">Red</option>
+                    <option class="color" value="Orange">Orange</option>
+                    <option class="color" value="Yellow">Yellow</option>
+                    <option class="color" value="Green">Green</option>
+                    <option class="color" value="Turquoise">Turquoise</option>
+                    <option class="color" value="Blue">Blue</option>
+                    <option class="color" value="Lilac">Lilac</option>
+                    <option class="color" value="Pink">Pink</option>
+                    <option class="color" value="White">White</option>
+                    <option class="color" value="Gray">Gray</option>
+                    <option class="color" value="Black">Black</option>
+                    <option class="color" value="Brown">Brown</option>
+                </select>
+                <button class="color" id="search-btn">Submit</button>
+            </form>
+        </section>
+
+        <section class="image-box">
+            <div class="images">
+        
+            </div>
+            <div class="page-btn">
+                <button id="previous-btn" class="color pg-select">Previous</button>
+                <button id="next-btn" class="color pg-select">Next</button>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <a id="logo" href="https://www.pixabay.com"><img src="logo.svg" alt="pixabay logo"></a>
+        <p> Copyright Pixabay - All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
