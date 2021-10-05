@@ -2,8 +2,8 @@ const form = document.querySelector('form');
 const imageDiv = document.querySelector('.images');
 const previousBtn = document.querySelector('#previous-btn');
 const nextBtn = document.querySelector('#next-btn');
+let url = new URLSearchParams();
 let page;
-let searchParam;
 let pageCount;
 
 form.onsubmit = e => {
@@ -13,12 +13,17 @@ form.onsubmit = e => {
     page = 1;
     imageDiv.innerHTML = '';
 
-    searchParam = imageInput + '+' + colorInput;
+    url = new URLSearchParams({
+        q: imageInput,
+        colors: colorInput 
+    });
+
     previousBtn.style.display = 'inline-block';
     nextBtn.style.display = 'inline-block';
     previousBtn.disabled = true;
     nextBtn.disabled = false;
-    getImages(searchParam, page);
+
+    getImages(url.toString(), page);
 };
 
 previousBtn.addEventListener('click', e => {
@@ -29,7 +34,8 @@ previousBtn.addEventListener('click', e => {
     }
     imageDiv.innerHTML = '';
     nextBtn.disabled = false;
-    getImages(searchParam, page);
+    getImages(url.toString(), page);
+
 });
 
 nextBtn.addEventListener('click', e => {
@@ -40,15 +46,17 @@ nextBtn.addEventListener('click', e => {
     }
     imageDiv.innerHTML = '';
     previousBtn.disabled = false;
-    getImages(searchParam, page);
+    getImages(url.toString(), page);
 });
 
 async function getImages(q, page) {
-    const response = await fetch(`https://pixabay.com/api/?key=23490353-89c36c37714c9cf4ccb87e1c8&q=${q}&per_page=10&page=${page}`);
+    const response = await fetch(`https://pixabay.com/api/?key=23490353-89c36c37714c9cf4ccb87e1c8&${q}&per_page=10&page=${page}`);
     const data = await response.json();
 
     console.log(data);
+
     pageCount = Math.ceil(data.totalHits / 10);
+
     let hits = data.hits;
     hits.forEach(i => {
         let parent = document.createElement('div');
@@ -58,17 +66,19 @@ async function getImages(q, page) {
         let image = document.createElement('img');
         image.setAttribute('src', i.largeImageURL);
         image.setAttribute('class', 'image-result');
-        link.appendChild(image);
-        parent.appendChild(link);
+        link.append(image);
+        parent.append(link);
         let caption = document.createElement('figcaption');
         let tags = document.createElement('h2');
         tags.innerText = i.tags;
-        caption.appendChild(tags);
+        caption.append(tags);
         let author = document.createElement('p');
         author.innerText = 'Creator: ' + i.user;
-        caption.appendChild(author);
-        parent.appendChild(caption);
-        imageDiv.appendChild(parent);
+        caption.append(author);
+        parent.append(caption);
+        imageDiv.append(parent);
+
+
     });
 
 }
